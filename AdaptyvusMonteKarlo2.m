@@ -1,4 +1,4 @@
-function [fMin2visi,vidurkis] = AdaptyvusMonteKarlo2(funkcija,a1,b1) %ka perduodam
+function [fMin2visi,vidurkis] = BiciuSpiecius(funkcija,a1,b1) %ka perduodam
 % Monte Carlo (Adaptyvus) metodo realizacija              %FUNKCIJA PERDUODAM
 %1. Sugeneruojame 100 atsitiktiniu tasku int [a;b]
 %2. Surandame, kuriame fcija igyja didz.(maz) reiksme
