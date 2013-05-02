@@ -56,16 +56,18 @@ rectangle('Position',[a1,a1,b1-a1,b1-a1],...
      text(x1_naujas(1,1)+ 0.3, x1_naujas(1,2),num2str(f1_naujas));
    %}
   %reikia sulieti 1 taska su visais kitais 
-
+m = 0;
   for i=1:9
      for j=i+1:10
+         m = m+1 %tam kad sunumeruoti tuos vidurkius
         x1_naujas = (x1_sort_10(i,:) + x1_sort_10(j,:))/2;
-        f1_naujas = funkcija(x1_naujas(1,:));  
+        f1_naujas = funkcija(x1_naujas(1,:));
+        if f1_naujas < f1_Min
+            f1_Min = f1_naujas;
+        end
         scatter(x1_naujas(1,1),x1_naujas(1,2),'g*');
-        for ii=1:45
-          for jj=1:45
-             text(x1_naujas(1,1)+ 0.3, x1_naujas(ii,jj),num2str(f1_naujas(ii)));   
-          end 
+        if mod(m,2)==1 %rodys tik nelyginius skaicius
+             text(x1_naujas(1,1)+ 0.3, x1_naujas(1,2),num2str(m)); %rodys indeksus
         end
      end
   end

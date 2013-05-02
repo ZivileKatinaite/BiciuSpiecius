@@ -112,12 +112,12 @@ xMax2=x2(indMax2,:)
 %fprintf('Surastas min2 = %6.4f, taske x2 = (%6.4f, %6.4f)\n',fMax2,xMax2(1),xMax2(2)) 
 hold on; %viska i viena brezti
 scatter(x2(:,1),x2(:,2),'b.');
-scatter(x3(:,1),x3(:,2),'b.');
+   %scatter(x3(:,1),x3(:,2),'b.');
 scatter(xMin2(1),xMin2(2),'r*');
-scatter(xMax2(1),xMax2(2),'y*');
+   scatter(xMax2(1),xMax2(2),'y*');
 rectangle('Position',[a21,a22,2.0,2.0],...
    'LineWidth',2,'LineStyle','--')
-rectangle('Position',[a31,a32,2.0,2.0],...
+  rectangle('Position',[a31,a32,2.0,2.0],...
    'LineWidth',2,'LineStyle','--')
 fMin2visi=[fMin2visi;fMin2];
 %fMax2visi=[fMax2visi;fMax2];
