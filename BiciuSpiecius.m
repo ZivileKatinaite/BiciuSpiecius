@@ -1,5 +1,5 @@
 function [f1_Min,x1_Min] = BiciuSpiecius(funkcija,a1,b1) %ka perduodam
-% Particle swam  metodo realizacija              %FUNKCIJA PERDUODAM
+% Particle swam (biciu spiecius) metodo realizacija              %FUNKCIJA PERDUODAM
 %1. Sugeneruojame 100 atsitiktiniu tasku int [a;b]
 %2. Surandame, kuriame fcija igyja didz.(maz) reiksme
 %a1=-10;   %pradine sritis
@@ -25,8 +25,12 @@ f1_sort_10 = f1_sort(1:10);
 x1_sort_10 = x1_sort(1:10,:);
 
 %surasta kol kas geriausios reiksmes ir taskas
-f1_Min = f1_sort(1);
-x1_Min = x1_sort(1,:);
+
+%if
+    f1_Min = f1_sort(1);
+    x1_Min = x1_sort(1,:);
+%end
+
 %[fMin1,indMin1]=min(f1); %reikia sort komandos
 %xMin1=x1(indMin1,:); 
 %fprintf('Surastas min1 = %6.4f, taske x1 = (%6.4f, %6.4f)%\n',fMin1,xMin1(1),xMin1(2))
@@ -44,21 +48,29 @@ rectangle('Position',[a1,a1,b1-a1,b1-a1],...
 %PRASIDEDA KLONAVIMAS
 
    % pvz.: "sulietas" 1 taskas su 2
-   x1_naujas = (x1_sort_10(1,:) + x1_sort_10(2,:))/2;
-   f1_naujas = funkcija(x1_naujas(1,:))
-   hold on   %nubreziama naujas taskas
-   scatter(x1_naujas(1,1),x1_naujas(1,2),'g*')
-   text(x1_naujas(1,1)+ 0.3, x1_naujas(1,2),num2str(f1_naujas))
+   %{
+     x1_naujas = (x1_sort_10(1,:) + x1_sort_10(2,:))/2;
+     f1_naujas = funkcija(x1_naujas(1,:));
+     hold on   %nubreziama naujas taskas
+     scatter(x1_naujas(1,1),x1_naujas(1,2),'g*');
+     text(x1_naujas(1,1)+ 0.3, x1_naujas(1,2),num2str(f1_naujas));
+   %}
+  %reikia sulieti 1 taska su visais kitais 
+
+  for i=1:9
+     for j=i+1:10
+        x1_naujas = (x1_sort_10(i,:) + x1_sort_10(j,:))/2;
+        f1_naujas = funkcija(x1_naujas(1,:));  
+        scatter(x1_naujas(1,1),x1_naujas(1,2),'g*');
+        for ii=1:45
+          for jj=1:45
+             text(x1_naujas(1,1)+ 0.3, x1_naujas(ii,jj),num2str(f1_naujas(ii)));   
+          end 
+        end
+     end
+  end
   
-   % pvz.: sulietas 1 su 2 ..10
-  %{
-   
-   for i=1:10
-       x1_naujas = (x1_sort_10(1,:) + x1_sort_10(i,:))/9;
-       
-   end
-   
-    %}
+
    
    
    
